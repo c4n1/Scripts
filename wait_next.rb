@@ -66,6 +66,9 @@ puts sleep_seconds
 #Countdown timer
 
 
+#  https://github.com/jfelchner/ruby-progressbar
+#
+#  Split seconds into 100 and sleep for each then incriment progress bar
 
 
 
