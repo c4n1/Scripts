@@ -7,6 +7,9 @@
 
 #adds optparse and creates empty hash for options
 require 'optparse'
+require 'ruby-progressbar'
+
+
 options = {}
 
 #Starts option parser
@@ -34,35 +37,54 @@ minutes = '00'
 if time.include? ":"
 	hours, minutes = time.split(":")
 	Integer hours
+	hours = hours.to_i
 	Integer minutes
+	minutes = minutes.to_i
 #If not empty assume is minutes and covert to int
 else 
 	Integer time
-	minutes = time
+	minutes = time.to_i
 end
 
 
 #Test time vars and then output how long to wait
 if hours == '0'
 	puts "Sleeping for #{minutes}m"
+	#sleep_seconds = minutes * 60
 else
 	puts "Sleeping for #{hours}h#{minutes}m"
 end
 
 
+hours_in_minutes = hours * 60
+sleep_minutes = hours_in_minutes + minutes
+sleep_seconds = sleep_minutes * 60
+
+puts sleep_seconds
+
+
 #Countdown timer
 
-waitseconds = 20
-jump = "\r\e[0K"
 
 
 
-wait = Time.now + waitseconds
-	while Time.now < wait
-		left = wait-Time.now
-		print "\r#{left}"
-		sleep 1
-	end
+
+
+
+#waitseconds = 20
+
+#ProgressBar.create
+
+
+
+
+#
+#wait = Time.now + waitseconds
+#	while Time.now < wait
+#		ProgressBar.incriment
+#		sleep 1
+#	end
+#
 
 
 
