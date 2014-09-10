@@ -55,12 +55,29 @@ else
 	puts "Sleeping for #{hours}h#{minutes}m"
 end
 
-
+#Convert input into seconds
 hours_in_minutes = hours * 60
-sleep_minutes = hours_in_minutes + minutes
-sleep_seconds = sleep_minutes * 60
+sleep_minutes = hours_in_minutes.to_i + minutes
+sleep_seconds = sleep_minutes.to_i * 60
 
 puts sleep_seconds
+
+#divide seconds by 100 so we can sleep for each one and incriment progress bar by one each time
+sleep_percent = sleep_seconds / 100
+
+puts sleep_percent
+
+#Create progress bar
+ProgressBar.create
+50.times { progressbar.increment }
+#Set vars for loop
+count = 0
+total = 100
+#Loop 100 times sleeping for sleep_percent each time and incrimenting the progress bar
+until count == total do
+	count = count + 1
+#	ProgressBar.increment
+end
 
 
 #Countdown timer
