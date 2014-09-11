@@ -80,18 +80,14 @@ end
 
 
 
-# Setup dbus
-#https://code.google.com/p/clementine-player/wiki/MPRIS
-#https://github.com/mvidner/ruby-dbus/blob/master/examples/rhythmbox/playpause.rb
-=begin
 bus = DBus::SessionBus.instance
 
-proxy = bus.introspect("org.mpris.clementine", "/Player")
-proxyi = proxy["org.freedesktop.MediaPlayer"]
+clementine = bus.service("org.mpris.clementine").object('/org/mpris/MediaPlayer2')
+clementine.introspect
+clementine.default_iface = 'org.mpris.MediaPlayer2.Player'
 
-proxyi.Next()
-=end
-
-
-
+#clementine.PlayPause
+clementine.Next
+#clementine.Previous
+#clementine.Stop
 
