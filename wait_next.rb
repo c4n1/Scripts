@@ -8,6 +8,7 @@
 #adds optparse and creates empty hash for options
 require 'optparse'
 require 'ruby-progressbar'
+#require 'ruby-dbus'
 
 
 options = {}
@@ -68,16 +69,11 @@ puts sleep_percent
 pbar = ProgressBar.create
 
 
-#Set vars for loop
-count = 0
-total = 100
 #Loop 100 times sleeping for sleep_percent each time and incrimenting the progress bar
-until count == total do
-	count = count + 1
+for i in 1..100 do
 	pbar.increment
 	#sleep 1
 	sleep sleep_percent
-
 end
 
 
