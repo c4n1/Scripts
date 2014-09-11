@@ -23,8 +23,6 @@ OptionParser.new do|opts|
 
 end.parse!
 
-#puts "time = #{options[:time]}"
-
 
 #Process inputs
 
@@ -56,55 +54,31 @@ else
 end
 
 #Convert input into seconds
-hours_in_minutes = hours * 60
-sleep_minutes = hours_in_minutes.to_i + minutes
-sleep_seconds = sleep_minutes.to_i * 60
-
-puts sleep_seconds
+hours_in_minutes = hours.to_f * 60
+sleep_minutes = hours_in_minutes + minutes
+sleep_seconds = sleep_minutes * 60
 
 #divide seconds by 100 so we can sleep for each one and incriment progress bar by one each time
 sleep_percent = sleep_seconds / 100
 
 puts sleep_percent
 
+
 #Create progress bar
-ProgressBar.create
-50.times { progressbar.increment }
+pbar = ProgressBar.create
+
+
 #Set vars for loop
 count = 0
 total = 100
 #Loop 100 times sleeping for sleep_percent each time and incrimenting the progress bar
 until count == total do
 	count = count + 1
-#	ProgressBar.increment
+	pbar.increment
+	#sleep 1
+	sleep sleep_percent
+
 end
-
-
-#Countdown timer
-
-
-#  https://github.com/jfelchner/ruby-progressbar
-#
-#  Split seconds into 100 and sleep for each then incriment progress bar
-
-
-
-
-
-#waitseconds = 20
-
-#ProgressBar.create
-
-
-
-
-#
-#wait = Time.now + waitseconds
-#	while Time.now < wait
-#		ProgressBar.incriment
-#		sleep 1
-#	end
-#
 
 
 
