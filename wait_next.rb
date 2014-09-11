@@ -8,7 +8,7 @@
 #adds optparse and creates empty hash for options
 require 'optparse'
 require 'ruby-progressbar'
-#require 'ruby-dbus'
+require 'dbus'
 
 
 options = {}
@@ -66,7 +66,8 @@ puts sleep_percent
 
 
 #Create progress bar
-pbar = ProgressBar.create
+pbar = ProgressBar.create(:title => "Time To", :remainder_mark => "-", :format => '%t: |%B| %e')
+
 
 
 #Loop 100 times sleeping for sleep_percent each time and incrimenting the progress bar
@@ -79,13 +80,18 @@ end
 
 
 
+# Setup dbus
+#https://code.google.com/p/clementine-player/wiki/MPRIS
+#https://github.com/mvidner/ruby-dbus/blob/master/examples/rhythmbox/playpause.rb
+=begin
+bus = DBus::SessionBus.instance
+
+proxy = bus.introspect("org.mpris.clementine", "/Player")
+proxyi = proxy["org.freedesktop.MediaPlayer"]
+
+proxyi.Next()
+=end
 
 
 
 
-#Functions for options
-
-
-
-
-#Call correct function
