@@ -8,6 +8,7 @@ def tellme(thing)
 	puts thing
 end
 
+
 def testentry(entry, guessthis)
 	if entry > guessthis then
 		tellme("Try lower")
